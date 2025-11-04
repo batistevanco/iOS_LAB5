@@ -1,0 +1,182 @@
+[
+  {
+    "endDateTime" : "2022-08-19T11:30:00",
+    "type" : "course",
+    "id" : "5639966920220819083000113000",
+    "startDateTime" : "2022-08-19T08:30:00",
+    "allDay" : false,
+    "title" : "Apps for iOS\nAfstandsonderwijs Informatica [examen]\nHostens Dirk",
+    "location" : "H - 60.07 computerlokaal (TI) (42p)"
+  },
+  {
+    "endDateTime" : "2022-08-19T12:30:00",
+    "type" : "course",
+    "id" : "5639981420220819093000123000",
+    "startDateTime" : "2022-08-19T09:30:00",
+    "allDay" : false,
+    "title" : "IT-project 1\nAO TI [examen]\nHostens Dirk",
+    "location" : "H - 60.07 computerlokaal (TI) (42p)"
+  },
+  {
+    "endDateTime" : "2022-08-19T14:00:00",
+    "type" : "course",
+    "id" : "5639957020220819130000140000",
+    "startDateTime" : "2022-08-19T13:00:00",
+    "allDay" : false,
+    "title" : "Apps for android\nAfstandsonderwijs Informatica [examen]\nHostens Dirk",
+    "location" : "H - 2.10 leslokaal met stopc. (32p)"
+  },
+  {
+    "allDay" : false,
+    "endDateTime" : "2022-08-25T14:30:00",
+    "title" : "Practice Enterprise 1 - Software Development\n2SD [herexamen]\nHostens Dirk",
+    "location" : "H - 4.03 leslokaal (32p)",
+    "type" : "course",
+    "id" : "5627979320220825120000143000",
+    "startDateTime" : "2022-08-25T12:00:00"
+  },
+  {
+    "allDay" : false,
+    "endDateTime" : "2022-08-25T18:30:00",
+    "title" : "iOS Development (MW)\n3SD & STVSD [herexamen]\nHostens Dirk",
+    "location" : "H - 60.07 computerlokaal (TI) (42p)",
+    "type" : "course",
+    "id" : "5627981120220825153000183000",
+    "startDateTime" : "2022-08-25T15:30:00"
+  },
+  {
+    "allDay" : false,
+    "endDateTime" : "2022-08-30T16:00:00",
+    "title" : "Android Development\n2SD & STVSD [herexamen mondeling]\nHostens Dirk",
+    "location" : "H - 4.03 leslokaal (32p)",
+    "type" : "course",
+    "id" : "5627976420220830120000160000",
+    "startDateTime" : "2022-08-30T12:00:00"
+  },
+  {
+    "allDay" : false,
+    "endDateTime" : "2022-09-03T11:00:00",
+    "title" : "Extra curriculair - Examen\n [inhaalexamens]\nHostens Dirk",
+    "location" : "H - 61.06 computerlokaal (40p)\nH - 4 centrale hal Hantal 4 (60p)",
+    "type" : "course",
+    "id" : "5675780420220903083000110000",
+    "startDateTime" : "2022-09-03T08:30:00"
+  },
+  {
+    "allDay" : true,
+    "endDateTime" : "2022-08-17T18:00:00",
+    "title" : "Academische opening",
+    "location" : null,
+    "type" : "academic",
+    "id" : "8560",
+    "startDateTime" : "2022-08-17T08:00:00"
+  },
+  {
+    "allDay" : true,
+    "endDateTime" : "2022-09-06T18:00:00",
+    "title" : "Devoxx\nIT Conferentie\n3SD",
+    "location" : "Kinepolis Antwerpen",
+    "type" : "academic",
+    "id" : "8561",
+    "startDateTime" : "2022-09-05T08:00:00"
+  },
+  {
+    "allDay" : false,
+    "endDateTime" : "2022-08-18T14:30:00",
+    "title" : "Infosessie PDT-studenten",
+    "location" : "52.06 STB",
+    "type" : "academic",
+    "id" : "8562",
+    "startDateTime" : "2022-08-18T12:00:00"
+  },
+  {
+    "allDay" : true,
+    "endDateTime" : "2022-08-21T18:00:00",
+    "title" : "Introdag eerste jaars bacheloropleidingen",
+    "location" : "HWB",
+    "type" : "academic",
+    "id" : "8563",
+    "startDateTime" : "2022-08-21T08:00:00"
+  },
+  {
+    "allDay" : false,
+    "endDateTime" : "2022-08-21T12:00:00",
+    "title" : "Boekenverkoop eerste jaars bacheloropleidingen",
+    "location" : "HWB",
+    "type" : "academic",
+    "id" : "8564",
+    "startDateTime" : "2022-08-21T09:30:00"
+  },
+  {
+    "allDay" : false,
+    "endDateTime" : "2022-08-21T13:00:00",
+    "title" : "infomoment studenten in hoger onderwijs",
+    "location" : null,
+    "type" : "academic",
+    "id" : "8565",
+    "startDateTime" : "2022-08-21T11:00:00"
+  },
+  {
+    "allDay" : true,
+    "endDateTime" : "2022-08-22T18:00:00",
+    "title" : "Emerging technologies",
+    "location" : null,
+    "type" : "academic",
+    "id" : "8566",
+    "startDateTime" : "2022-08-20T08:00:00"
+  },
+  {
+    "allDay" : true,
+    "endDateTime" : "2022-08-20T18:00:00",
+    "title" : "Assessments native speakers\n3BME en 3EBM",
+    "location" : "Aula",
+    "type" : "academic",
+    "id" : "8567",
+    "startDateTime" : "2022-08-20T08:00:00"
+  },
+  {
+    "allDay" : true,
+    "endDateTime" : "2022-08-20T18:00:00",
+    "title" : "Instaptoets Engels\n2SCM",
+    "location" : "Cube",
+    "type" : "academic",
+    "id" : "8568",
+    "startDateTime" : "2022-08-20T08:00:00"
+  },
+  {
+    "allDay" : true,
+    "endDateTime" : "2022-08-20T18:00:00",
+    "title" : "Teambuilding Cofep\n3OM",
+    "location" : "De gavers Harelbeke",
+    "type" : "academic",
+    "id" : "8569",
+    "startDateTime" : "2022-08-20T08:00:00"
+  },
+  {
+    "allDay" : true,
+    "endDateTime" : "2022-08-20T18:00:00",
+    "title" : "Sollicitaties autosalon\n2AMA",
+    "location" : "Autosalon Expo Brussel",
+    "type" : "academic",
+    "id" : "8570",
+    "startDateTime" : "2022-08-20T08:00:00"
+  },
+  {
+    "allDay" : true,
+    "endDateTime" : "2022-08-20T18:00:00",
+    "title" : "Finver - Europees project\nFinver en Imver",
+    "location" : null,
+    "type" : "academic",
+    "id" : "8571",
+    "startDateTime" : "2022-08-20T08:00:00"
+  },
+  {
+    "allDay" : true,
+    "endDateTime" : "2022-08-20T18:00:00",
+    "title" : "Startavond afstandsonderwijs",
+    "location" : "HWB - H4 centrale hal",
+    "type" : "academic",
+    "id" : "8572",
+    "startDateTime" : "2022-08-20T08:00:00"
+  }
+]
