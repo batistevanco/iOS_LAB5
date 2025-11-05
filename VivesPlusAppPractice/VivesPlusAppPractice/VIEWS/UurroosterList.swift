@@ -1,0 +1,73 @@
+//
+//  UurroosterList.swift
+//  VivesPlusAppPractice
+//
+//  Created by Batiste Vancoillie on 05/11/2025.
+//
+
+import SwiftUI
+
+struct UurroosterList: View {
+    
+    @Environment(UurroosterDataStore.self) private var dataStore
+    @State var loading = true
+    @State var selectedEventId: String?
+    
+    var body: some View {
+        NavigationSplitView {
+            if loading{
+                ProgressView("Loading...")
+            }else{
+                List(dataStore.uurrooster, id: \.id, selection: $selectedEventId) { event in
+                    VStack(alignment: .leading, spacing: 4) {
+                                            Text(event.title).font(.headline)
+                                            Text(event.location)
+                                                .font(.subheadline)
+                                                .foregroundStyle(.secondary)
+                                            Text(DateFormatter.localizedString(from: event.startDateTime,
+                                                                               dateStyle: .short,
+                                                                               timeStyle: .short))
+                                                .font(.caption)
+                                                .foregroundStyle(.secondary)
+                                        }
+                                        .padding(.vertical, 2)
+                }.navigationTitle(Text("Uurrooster"))
+                    .toolbar{
+                        ToolbarItem(placement: .primaryAction) {
+                            NavigationLink(destination: AddEventView()) {
+                                Image(systemName: "plus")
+                            }
+                        }
+                    }
+            }
+        } detail: {
+            if let selectedEventId,
+               let event = dataStore.uurrooster.first(where: { $0.id == selectedEventId }) {
+
+                UurroosterDetailView(event: event)
+                    .toolbar {
+                        ToolbarItem(placement: .primaryAction) {
+                            NavigationLink(destination: EditEventView(originalEvent: event)) {
+                                Image(systemName: "square.and.pencil")
+                            }
+                        }
+                    }
+
+            } else if loading {
+                ProgressView()
+            } else {
+                ContentUnavailableView("Kies een event", systemImage: "calendar")
+            }
+        }
+        .task {
+            await dataStore.loadData()
+            loading = false
+            selectedEventId = dataStore.uurrooster.first?.id
+        }
+
+    }
+}
+
+#Preview {
+    UurroosterList()
+}

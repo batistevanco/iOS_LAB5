@@ -93,17 +93,14 @@ struct AddEventView: View {
     }
 
     private func saveEvent() {
-        // EventModel uit jouw project is een class zonder init -> we maken hem zo:
-        let newEvent = EventModel()
-        newEvent.id = UUID().uuidString
-        newEvent.title = title
-        newEvent.location = location
-        newEvent.allDay = allDay
-        newEvent.startDateTime = startDate
-        newEvent.endDateTime = endDate
-        newEvent.type = type
-
-        dataStore.addEvent(event: newEvent)
+        dataStore.saveEvent(
+            title: title,
+            location: location,
+            allDay: allDay,
+            startDate: startDate,
+            endDate: endDate,
+            type: type
+        )
         dismiss()
     }
 }

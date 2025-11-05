@@ -22,10 +22,7 @@ struct EditEventView: View {
     @State private var endDate: Date = Date()
     @State private var type: Int = 0   // 0 = academic, 1 = course
 
-    init(event: EventModel) {
-        self.originalEvent = event
-        // let op: @State kun je niet hier vullen, doen we in .onAppear
-    }
+    
 
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -123,15 +120,7 @@ struct EditEventView: View {
     }
 
     private func updateEvent() {
-        dataStore.updateExistingEvent(
-            event: originalEvent,
-            title: title,
-            location: location,
-            allDay: allDay,
-            startDate: startDate,
-            endDate: endDate,
-            type: type
-        )
+        dataStore.updateNewEvent(id: originalEvent.id, allDay: allDay, title: title, location: location, type: type, startDateTime: startDate, endDateTime: endDate)
         dismiss()
     }
 }

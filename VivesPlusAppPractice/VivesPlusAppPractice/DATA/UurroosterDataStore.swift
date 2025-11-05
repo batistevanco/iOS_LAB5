@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Observation
+import Combine
 
 @Observable
 class UurroosterDataStore {
@@ -16,9 +18,7 @@ class UurroosterDataStore {
     }
     
     private func sort(){
-        uurrooster.sort { lhs, rhs in
-            lhs.startDateTime > rhs.startDateTime
-        }
+        uurrooster.sort(by: { $0.startDateTime < $1.startDateTime })
     }
     
     func addEvent(event: EventModel ){
@@ -26,8 +26,8 @@ class UurroosterDataStore {
         sort()
     }
     
-    func updateEvent(event: EventModel ){
-        if let index = uurrooster.firstIndex(of: event) {
+    func updateEvent(event: EventModel) {
+        if let index = uurrooster.firstIndex(where: { $0.id == event.id }) {
             uurrooster[index] = event
             sort()
         }
@@ -45,30 +45,30 @@ class UurroosterDataStore {
         return EventModel()
     }
     
-    func saveEvent(title: String, location: String, allDay: Bool, startDate: Date, endDate: Date, type: Int) {
-            let newEvent = EventModel()
-            newEvent.id = UUID().uuidString
-            newEvent.title = title
-            newEvent.location = location
+    func addNewEvent(id: String, allDay: Bool, title: String, location: String?, type: Int, startDateTime: Date, endDateTime: Date){
+        let newEvent = EventModel()
+        newEvent.id = id
             newEvent.allDay = allDay
-            newEvent.startDateTime = startDate
-            newEvent.endDateTime = endDate
-            newEvent.type = type
+            newEvent.title = title
+            newEvent.location = location ?? ""
+            newEvent.startDateTime = startDateTime
+            newEvent.endDateTime = endDateTime
+        newEvent.type = type
+        addEvent(event: newEvent)
+    }
+    
+    func updateNewEvent(id: String, allDay: Bool, title: String, location: String?, type: Int, startDateTime: Date, endDateTime: Date) {
+        let newEvent = EventModel()
+        newEvent.id = id
+        newEvent.allDay = allDay
+        newEvent.title = title
+        newEvent.location = location ?? ""
+        newEvent.startDateTime = startDateTime
+        newEvent.endDateTime = endDateTime
+        newEvent.type = type
 
-            addEvent(event: newEvent)
-        }
-
-        func updateExistingEvent(event: EventModel, title: String, location: String, allDay: Bool, startDate: Date, endDate: Date, type: Int) {
-            var updatedEvent = event
-            updatedEvent.title = title
-            updatedEvent.location = location
-            updatedEvent.allDay = allDay
-            updatedEvent.startDateTime = startDate
-            updatedEvent.endDateTime = endDate
-            updatedEvent.type = type
-
-            updateEvent(event: updatedEvent)
-        }
+        updateEvent(event: newEvent)   // nu werkt dit wél omdat updateEvent op id zoekt
+    }
     
     func loadData() async {
         //simulate async call
@@ -77,8 +77,7 @@ class UurroosterDataStore {
             try await Task.sleep(for: .seconds(2)) // Simulate long load
             let data: [EventModelJson] = try load("uurrooster.json")
             //Hier komt mapping naar array van EventModel -> uurrooster
-            self.uurrooster = data.map { $0.toEventModel() }
-
+            self.uurrooster = data.map{ $0.toEventModel() }
             sort()
             print("✅ Data loaded successfully.")
             

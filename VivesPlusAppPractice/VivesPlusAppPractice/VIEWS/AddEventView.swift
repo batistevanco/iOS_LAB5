@@ -1,20 +1,9 @@
-//
-//  EditEventView.swift
-//  VivesPlusApp
-//
-//  Created by Batiste Vancoillie on 04/11/2025.
-//
-
-
 import SwiftUI
 
-struct EditEventView: View {
+struct AddEventView: View {
     @Environment(UurroosterDataStore.self) private var dataStore
     @Environment(\.dismiss) private var dismiss
 
-    let originalEvent: EventModel
-
-    // states gevuld met de waarden van het event
     @State private var title: String = ""
     @State private var location: String = ""
     @State private var allDay: Bool = false
@@ -22,67 +11,57 @@ struct EditEventView: View {
     @State private var endDate: Date = Date()
     @State private var type: Int = 0   // 0 = academic, 1 = course
 
-    init(event: EventModel) {
-        self.originalEvent = event
-        // let op: @State kun je niet hier vullen, doen we in .onAppear
-    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
-            // titel bovenaan
+
+            // titel bovenaan rechtszoals in screenshot
             HStack {
                 Spacer()
-                Text("EDIT EVENT")
+                Text("ADD EVENT")
                     .font(.headline)
                 Spacer()
-            }
-
-            // originele titel zoals in screenshot
-            VStack(alignment: .leading, spacing: 2) {
-                Text(originalEvent.title)
-                    .font(.body)
-                    .bold()
-                if !originalEvent.location.isEmpty {
-                    Text(originalEvent.location)
-                        .foregroundStyle(.secondary)
-                }
             }
 
             // formulier
             VStack(alignment: .leading, spacing: 16) {
 
-                HStack {
+                HStack(alignment: .center) {
+                    Text("Title?")
+                        .frame(width: 120, alignment: .trailing)
+                    TextField("Title", text: $title)
+                        .textFieldStyle(.roundedBorder)
+                }
+
+                HStack(alignment: .center) {
                     Text("Location?")
                         .frame(width: 120, alignment: .trailing)
                     TextField("Location", text: $location)
                         .textFieldStyle(.roundedBorder)
                 }
 
-                HStack {
-                    Text("") // voor uitlijning
+                HStack(alignment: .center) {
+                    Text("") // lege label voor uitlijning
                         .frame(width: 120, alignment: .trailing)
                     Toggle("All day?", isOn: $allDay)
+                        .toggleStyle(.switch)
+                        .frame(alignment: .leading)
                 }
 
-                HStack {
+                HStack(alignment: .center) {
                     Text("Start date & time?")
                         .frame(width: 120, alignment: .trailing)
-                    DatePicker("",
-                               selection: $startDate,
-                               displayedComponents: allDay ? [.date] : [.date, .hourAndMinute])
+                    DatePicker("", selection: $startDate, displayedComponents: allDay ? [.date] : [.date, .hourAndMinute])
                         .labelsHidden()
                 }
 
-                HStack {
+                HStack(alignment: .center) {
                     Text("End date & time?")
                         .frame(width: 120, alignment: .trailing)
-                    DatePicker("",
-                               selection: $endDate,
-                               displayedComponents: allDay ? [.date] : [.date, .hourAndMinute])
+                    DatePicker("", selection: $endDate, displayedComponents: allDay ? [.date] : [.date, .hourAndMinute])
                         .labelsHidden()
                 }
 
-                HStack {
+                HStack(alignment: .center) {
                     Text("Type")
                         .frame(width: 120, alignment: .trailing)
                     Picker("Type", selection: $type) {
@@ -96,8 +75,8 @@ struct EditEventView: View {
 
             HStack {
                 Spacer()
-                Button("UPDATE") {
-                    updateEvent()
+                Button("SAVE") {
+                    saveEvent()
                 }
                 .buttonStyle(.bordered)
 
@@ -111,27 +90,16 @@ struct EditEventView: View {
             Spacer()
         }
         .padding()
-        .onAppear {
-            // huidige waarden van het event in de velden zetten
-            title = originalEvent.title
-            location = originalEvent.location
-            allDay = originalEvent.allDay
-            startDate = originalEvent.startDateTime
-            endDate = originalEvent.endDateTime
-            type = originalEvent.type
-        }
     }
 
-    private func updateEvent() {
-        dataStore.updateExistingEvent(
-            event: originalEvent,
-            title: title,
-            location: location,
-            allDay: allDay,
-            startDate: startDate,
-            endDate: endDate,
-            type: type
-        )
+    private func saveEvent() {
+        dataStore.addNewEvent(id: UUID().uuidString, allDay: allDay, title: title, location: location, type: type, startDateTime: startDate, endDateTime: endDate)
         dismiss()
     }
+}
+
+#Preview {
+    let store = UurroosterDataStore()
+    return AddEventView()
+        .environment(store)
 }

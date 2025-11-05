@@ -28,7 +28,6 @@ struct UurroosterList: View {
                 }
                 .navigationTitle("Uurrooster")
                 .toolbar {
-                    // 👇 dit hoort nu echt bij de sidebar
                     ToolbarItem(placement: .navigation) {
                         NavigationLink(destination: AddEventView()) {
                             Image(systemName: "plus")
