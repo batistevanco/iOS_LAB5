@@ -59,6 +59,7 @@ struct AddEventView: View {
                         .frame(width: 120, alignment: .trailing)
                     DatePicker("", selection: $endDate, displayedComponents: allDay ? [.date] : [.date, .hourAndMinute])
                         .labelsHidden()
+                 
                 }
 
                 HStack(alignment: .center) {

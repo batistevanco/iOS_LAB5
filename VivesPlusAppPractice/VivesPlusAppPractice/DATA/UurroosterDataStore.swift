@@ -34,7 +34,7 @@ class UurroosterDataStore {
     }
     
     func deleteEvent(id: String) {
-        uurrooster.removeAll() { $0.id == id }
+        uurrooster.removeAll(where: { $0.id == id })
         sort()
     }
     
